@@ -1,18 +1,19 @@
 (function (factory) {
-    'use strict';
+	'use strict';
 
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['angular'], factory);
-    } else if (typeof exports === 'object') {
-        // Node/CommonJS
-        factory(require('angular'));
-    } else {
-        // Browser globals
-        factory(angular);
-    }
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(['angular'], factory);
+	} else if (typeof exports === 'object') {
+		// Node/CommonJS
+		factory(require('angular'));
+	} else {
+		// Browser globals
+		factory(angular);
+	}
 }(function (angular) {
-
+	'use strict';
+	
 	var module = angular.module('cloudtasks', []);
 
 	module.provider('$cloudtasks', [ function () {
@@ -48,19 +49,19 @@
 	}]);
 
 	module.directive('ctSrc', ['$cloudtasks', '$location', '$timeout', function($cloudtasks, $location, $timeout) {
-	    return {
-	    	restrict: 'A',
-            scope: {},
-	    	link: function(scope, element, attrs) {
-	    		$timeout(function () {
-	    			var width = element.width();
-		    		var height = element.height();
+		return {
+			restrict: 'A',
+			scope: {},
+			link: function(scope, element, attrs) {
+				$timeout(function () {
+					var width = element.width();
+					var height = element.height();
 
-		    		if (attrs.ctSrc.indexOf('http') === -1) {
-		    			attrs.ctSrc = $location.protocol() +':'+ attrs.ctSrc;
-		    		}
+					if (attrs.ctSrc.indexOf('http') === -1) {
+						attrs.ctSrc = $location.protocol() +':'+ attrs.ctSrc;
+					}
 
-		            for (var x = 0; x < $cloudtasks.photoSizesWidths.length; x++) {
+					for (var x = 0; x < $cloudtasks.photoSizesWidths.length; x++) {
 						if ($cloudtasks.photoSizesWidths[x] < width) {
 							for (var y = 0; y < $cloudtasks.photoSizesHeights.length; y++) {
 								if ($cloudtasks.photoSizesHeights[y] < height) {
@@ -73,10 +74,10 @@
 							}
 							x = $cloudtasks.photoSizesWidths.length + 1;
 						}
-					};
-	    		}, 0);
-	        }
-	    };
+					}
+				}, 0);
+			}
+		};
 	}]);
 
 	return module;
