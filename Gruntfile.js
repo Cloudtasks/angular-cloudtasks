@@ -17,9 +17,7 @@ module.exports = function(grunt) {
 	@toc 2.
 	*/
 	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-karma');
 
@@ -84,24 +82,8 @@ module.exports = function(grunt) {
 				},
 				build: {
 					files:  {},
-					src:    'cloudtasks.js',
-					dest:   'cloudtasks.min.js'
-				}
-			},
-			less: {
-				development: {
-					options: {
-					},
-					files: {
-						"main.css": "_base.less",
-						"cloudtasks.css": "_cloudtasks.less"
-					}
-				}
-			},
-			cssmin: {
-				dev: {
-					src: ['cloudtasks.css'],
-					dest: 'cloudtasks.min.css'
+					src:    'ng-cloudtasks.js',
+					dest:   'dist/ng-cloudtasks.min.js'
 				}
 			}/*,
 			karma: {
@@ -120,7 +102,7 @@ module.exports = function(grunt) {
 		*/
 		// Default task(s).
 		// grunt.registerTask('default', ['jshint:beforeconcat', 'less:development', 'concat:devJs', 'concat:devCss']);
-		grunt.registerTask('default', ['jshint:beforeconcatQ', 'less:development', 'cssmin', 'uglify:build']);
+		grunt.registerTask('default', ['jshint:beforeconcatQ', 'uglify:build']);
 	
 	}
 	init({});		//initialize here for defaults (init may be called again later within a task)

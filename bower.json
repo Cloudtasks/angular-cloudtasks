@@ -1,5 +1,5 @@
 {
-	"name": "angular-cloudtasks-demo",
+	"name": "angular-cloudtasks",
 	"version": "0.0.0",
 	"authors": [
 		"João Ribeiro <jonnybgod@gmail.com>"
@@ -8,6 +8,9 @@
 	"keywords": [
 	],
 	"license": "MIT",
+	"main": [
+	    "./dist/ng-cloudtasks.min.js"
+	],
 	"ignore": [
 		"**/.*",
 		"node_modules",
@@ -16,12 +19,9 @@
 		"tests"
 	],
 	"dependencies": {
-		"angular":"~1.2.0",
-		"angular-animate":"~1.2.0",
-		"angular-sanitize":"~1.2.0",
-		"angular-touch":"~1.2.0",
-		"angular-route":"~1.2.0"
+		"angular":"~1"
 	},
 	"devDependencies": {
+		"angular-mocks": "~1"
 	}
 }
