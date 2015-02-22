@@ -1,11 +1,19 @@
 {
 	"name": "angular-cloudtasks",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"authors": [
 		"João Ribeiro <jonnybgod@gmail.com>"
 	],
 	"description": "Demo",
 	"keywords": [
+		"angular",
+		"AngularJS",
+		"angular-cloudtasks",
+		"cloudtasks",
+		"image",
+		"images",
+		"processing",
+		"image-processing"
 	],
 	"license": "MIT",
 	"main": [
