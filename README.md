@@ -5,7 +5,13 @@
 [![devDependency Status](https://img.shields.io/david/dev/twbs/angular-cloudtasks.svg?style=flat)](https://david-dm.org/twbs/angular-cloudtasks#info=devDependencies)
 [![Build Status][travis-image]][travis-url]
 
-TODO: Description
+Deliver images with the right size
+
+angular-cloudtasks helps using [Cloudtasks.io](https://cloudtasks.io) image processing task by substituting your images sources with the processing URL.
+
+With this you can process your images on the fly applying resize, trim, and even filters to your images. In the end you will save a lot of bandwidth for you and your users as well as improve the overall user experience.
+
+You will need a [Cloudtasks.io](https://cloudtasks.io) account to be able to use this module;
 
 ## Install
 
@@ -13,9 +19,13 @@ TODO: Description
 $ bower install --save angular-cloudtasks
 ```
 
+add cloudtasks to your AngularJs module:
+
 ```javascript
 angular.module('myModule', ['cloudtasks']);
 ```
+
+Configure with your [Cloudtasks.io](https://cloudtasks.io) client id:
 
 ```javascript
 .config(['$cloudtasksProvider', function ($cloudtasksProvider) {
