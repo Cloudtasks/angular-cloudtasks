@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/angular-cloudtasks.svg?style=flat)](https://www.npmjs.com/package/angular-cloudtasks)
 [![Build Status](https://img.shields.io/travis/twbs/angular-cloudtasks/master.svg?style=flat)](https://travis-ci.org/twbs/angular-cloudtasks)
 [![devDependency Status](https://img.shields.io/david/dev/twbs/angular-cloudtasks.svg?style=flat)](https://david-dm.org/twbs/angular-cloudtasks#info=devDependencies)
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/angular-cloudtasks.svg)](https://saucelabs.com/u/angular-cloudtasks)
+[![Build Status][travis-image]][travis-url]
 
 TODO: Description
 
@@ -65,3 +65,8 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[npm-url]: https://npmjs.org/package/angular-cloudtasks
+[npm-image]: https://badge.fury.io/js/angular-cloudtasks.svg
+[travis-url]: https://travis-ci.org/Cloudtasks/angular-cloudtasks
+[travis-image]: https://travis-ci.org/Cloudtasks/angular-cloudtasks.svg?branch=master
