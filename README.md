@@ -1,51 +1,67 @@
-# 
+# [angular-cloudtasks](https://cloudtasks.io)
+![Bower version](https://img.shields.io/bower/v/angular-cloudtasks.svg?style=flat)
+[![npm version](https://img.shields.io/npm/v/angular-cloudtasks.svg?style=flat)](https://www.npmjs.com/package/angular-cloudtasks)
+[![Build Status](https://img.shields.io/travis/twbs/angular-cloudtasks/master.svg?style=flat)](https://travis-ci.org/twbs/angular-cloudtasks)
+[![devDependency Status](https://img.shields.io/david/dev/twbs/angular-cloudtasks.svg?style=flat)](https://david-dm.org/twbs/angular-cloudtasks#info=devDependencies)
+[![Selenium Test Status](https://saucelabs.com/browser-matrix/angular-cloudtasks.svg)](https://saucelabs.com/u/angular-cloudtasks)
 
-[TODO - brief summary]
-
-## Demo
-http://Cloudtasks.github.io/angular-cloudtasks/
-
-## Dependencies
-- required:
-	[TODO]
-- optional
-	[TODO]
-
-See `bower.json` and `index.html` in the `gh-pages` branch for a full list / more details
+TODO: Description
 
 ## Install
-1. download the files
-	1. Bower
-		1. add `"angular-cloudtasks": "latest"` to your `bower.json` file then run `bower install` OR run `bower install angular-cloudtasks`
-2. include the files in your app
-	1. `cloudtasks.min.js`
-	2. `cloudtasks.less` OR `cloudtasks.min.css` OR `cloudtasks.css`
-3. include the module in angular (i.e. in `app.js`) - `Cloudtasks.angular-cloudtasks`
 
-See the `gh-pages` branch, files `bower.json` and `index.html` for a full example.
+```sh
+$ bower install --save angular-cloudtasks
+```
 
+```javascript
+angular.module('myModule', ['cloudtasks']);
+```
 
-## Documentation
-See the `cloudtasks.js` file top comments for usage examples and documentation
-https://github.com/Cloudtasks/angular-cloudtasks/blob/master/cloudtasks.js
+```javascript
+.config(['$cloudtasksProvider', function ($cloudtasksProvider) {
+	$cloudtasksProvider.settings.clientId = 'YOUR_CLIENT_ID';
+}])
+```
 
+## Usage
 
-## Development
+```html
+<img data-ct-src="{{imgUrl}}"/>
+```
 
-1. `git checkout gh-pages`
-	1. run `npm install && bower install`
-	2. write your code then run `grunt`
-	3. git commit your changes
-2. copy over core files (.js and .css/.less for directives) to master branch
-	1. `git checkout master`
-	2. `git checkout gh-pages cloudtasks.js cloudtasks.min.js cloudtasks.less cloudtasks.css cloudtasks.min.css`
-3. update README, CHANGELOG, bower.json, and do any other final polishing to prepare for publishing
-	1. git commit changes
-	2. git tag with the version number, i.e. `git tag v1.0.0`
-4. create github repo and push
-	1. [if remote does not already exist or is incorrect] `git remote add origin [github url]`
-	2. `git push origin master --tags` (want to push master branch first so it is the default on github)
-	3. `git checkout gh-pages`
-	4. `git push origin gh-pages`
-5. (optional) register bower component
-	1. `bower register angular-cloudtasks [git repo url]`
+## Options (optional)
+
+### default options
+
+```javascript
+.config(['$cloudtasksProvider', function ($cloudtasksProvider) {
+	$cloudtasksProvider.settings.clientId = 'YOUR_CLIENT_ID';
+
+	$cloudtasksProvider.settings.options = {
+		trim: false
+	}
+}])
+```
+
+### per image options
+
+```html
+<img data-ct-src="{{imgUrl}}" data-ct-options="{trim: true, smart: true}"/>
+```
+
+## Option list
+
+ - trim
+ - smart
+
+## License
+
+(The MIT License)
+
+Copyright (c) 2015 [Reality Connect](http://reality-connect.pt)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

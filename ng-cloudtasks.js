@@ -13,11 +13,13 @@
 	}
 }(function (angular) {
 	'use strict';
-	
+
 	var module = angular.module('cloudtasks', []);
 
 	module.provider('$cloudtasks', [ function () {
 		var settings = {
+			clientId: false,
+			options: {},
 			photoSizesWidths: [
 				1280,
 				920,
@@ -53,6 +55,11 @@
 			restrict: 'A',
 			scope: {},
 			link: function(scope, element, attrs) {
+				if (!$cloudtasks.clientId) {
+					console.log('You need to configure your clientId');
+					return;
+				}
+
 				$timeout(function () {
 					var width = element.width();
 					var height = element.height();
@@ -61,13 +68,26 @@
 						attrs.ctSrc = $location.protocol() +':'+ attrs.ctSrc;
 					}
 
+					var optionsString = '/';
+					var options = $cloudtasks.options;
+
+					if (attrs.ctOptions) {
+						options = angular.extend(options, scope.$eval(attrs.ctOptions));
+					}
+
+					angular.forEach(options, function (value, key) {
+						if (value) {
+							optionsString = optionsString + key +'/';
+						}
+					});
+
 					for (var x = 0; x < $cloudtasks.photoSizesWidths.length; x++) {
 						if ($cloudtasks.photoSizesWidths[x] < width) {
 							for (var y = 0; y < $cloudtasks.photoSizesHeights.length; y++) {
 								if ($cloudtasks.photoSizesHeights[y] < height) {
 									var calc = ($cloudtasks.photoSizesWidths[x-1] ? $cloudtasks.photoSizesWidths[x-1] : $cloudtasks.photoSizesWidths[x]) +'x'+ ($cloudtasks.photoSizesHeights[y-1] ? $cloudtasks.photoSizesHeights[y-1] : $cloudtasks.photoSizesHeights[y]);
 									
-									element.attr('src', '//images.cloudtasks.io/' + (attrs.trim ? 'trim/': '') + calc + (attrs.smart ? '/smart': '') +'/'+ attrs.ctSrc);
+									element.attr('src', '//dev-images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ attrs.ctSrc);
 									
 									y = $cloudtasks.photoSizesHeights.length + 1;
 								}
