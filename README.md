@@ -61,8 +61,12 @@ Configure with your [Cloudtasks.io](https://cloudtasks.io) client id:
 
 ## Option list
 
- - trim
- - smart
+ - trim (remove color frame)
+ - smart (use smart detection for crop and resize)
+ - fit_in
+ 	- adaptive
+ 	- full
+ - filters (apply any imagemagic supported filter)
 
 ## License
 
