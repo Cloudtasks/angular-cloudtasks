@@ -87,7 +87,7 @@
 								if ($cloudtasks.photoSizesHeights[y] < height) {
 									var calc = ($cloudtasks.photoSizesWidths[x-1] ? $cloudtasks.photoSizesWidths[x-1] : $cloudtasks.photoSizesWidths[x]) +'x'+ ($cloudtasks.photoSizesHeights[y-1] ? $cloudtasks.photoSizesHeights[y-1] : $cloudtasks.photoSizesHeights[y]);
 									
-									element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ attrs.ctSrc);
+									element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(attrs.ctSrc));
 									
 									y = $cloudtasks.photoSizesHeights.length + 1;
 								}
