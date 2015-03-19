@@ -50,13 +50,15 @@ Configure with your [Cloudtasks.io](https://cloudtasks.io) client id:
 	$cloudtasksProvider.settings.options = {
 		trim: false
 	}
+
+	$cloudtasksProvider.settings.defaultImage = "http://example.com/defaultImage.jpg";
 }])
 ```
 
 ### per image options
 
 ```html
-<img data-ct-src="{{imgUrl}}" data-ct-options="{trim: true, smart: true}"/>
+<img data-ct-src="{{imgUrl}}" data-ct-options="{trim: true, smart: true}" data-ct-default="http://example.com/defaultImage.jpg"/>
 ```
 
 ## Option list
