@@ -2,8 +2,7 @@
 ![Bower version](https://img.shields.io/bower/v/angular-cloudtasks.svg?style=flat)
 [![npm version](https://img.shields.io/npm/v/angular-cloudtasks.svg?style=flat)](https://www.npmjs.com/package/angular-cloudtasks)
 [![Build Status](https://img.shields.io/travis/twbs/angular-cloudtasks/master.svg?style=flat)](https://travis-ci.org/twbs/angular-cloudtasks)
-[![devDependency Status](https://img.shields.io/david/dev/twbs/angular-cloudtasks.svg?style=flat)](https://david-dm.org/twbs/angular-cloudtasks#info=devDependencies)
-[![Build Status][travis-image]][travis-url]
+[![devDependency Status](https://img.shields.io/david/dev/jonnybgod/angular-cloudtasks.svg?style=flat)](https://david-dm.org/jonnybgod/angular-cloudtasks#info=devDependencies)
 [![Codacy Badge](https://www.codacy.com/project/badge/556dd3b19d804062a653336f35987384)](https://www.codacy.com/public/jonnybgod/angular-cloudtasks)
 
 Deliver images with the right size
