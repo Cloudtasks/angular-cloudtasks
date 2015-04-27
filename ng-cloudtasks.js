@@ -16,17 +16,6 @@
 
 	var module = angular.module('cloudtasks', []);
 
-	function encodeRFC5987ValueChars (str) {
-		return encodeURIComponent(str).
-			// Note that although RFC3986 reserves "!", RFC5987 does not,
-			// so we do not need to escape it
-			replace(/['()]/g, escape). // i.e., %27 %28 %29
-			replace(/\*/g, '%2A').
-			// The following are not required for percent-encoding per RFC5987, 
-			//  so we can allow for a little better readability over the wire: |`^
-			replace(/%(?:7C|60|5E|2F)/g, unescape);
-	}
-
 	module.provider('$cloudtasks', [ function () {
 		var settings = {
 			clientId: false,
@@ -88,7 +77,11 @@
 
 					angular.forEach(options, function (value, key) {
 						if (value) {
-							optionsString = optionsString + key +'/';
+							if (typeof value === 'string') {
+								optionsString = optionsString + key +':'+ value +'/';
+							} else {
+								optionsString = optionsString + key +'/';
+							}
 						}
 					});
 
@@ -99,14 +92,14 @@
 									var calc = ($cloudtasks.photoSizesWidths[x-1] ? $cloudtasks.photoSizesWidths[x-1] : $cloudtasks.photoSizesWidths[x]) +'x'+ ($cloudtasks.photoSizesHeights[y-1] ? $cloudtasks.photoSizesHeights[y-1] : $cloudtasks.photoSizesHeights[y]);
 									
 									if (attrs.ctDefault || $cloudtasks.defaultImage) {
-										element.css('background-image', 'url(//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeRFC5987ValueChars(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))) +')');
+										element.css('background-image', 'url(//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))) +')');
 										element.bind('error', function() {
 											element.unbind( "error" );
-											element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeRFC5987ValueChars(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))));
+											element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))));
 										});
 									}
 
-									element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeRFC5987ValueChars(decodeURIComponent(attrs.ctSrc)));
+									element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent(attrs.ctSrc)));
 									
 									y = $cloudtasks.photoSizesHeights.length + 1;
 								}
