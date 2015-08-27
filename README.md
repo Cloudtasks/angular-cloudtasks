@@ -66,7 +66,7 @@ Configure with your [Cloudtasks.io](https://cloudtasks.io) client id:
 <img data-ct-src="{{imgUrl}}" data-ct-options="{trim: true, smart: 'face', filters: 'blur(10):flip()'}" data-ct-default="http://example.com/defaultImage.jpg" data-ct-force-size="">
 ```
 
-See [Image transformations documentation]](https://cloudtasks.io/docs/image/#image) for all available options.
+See [Image transformations documentation](https://cloudtasks.io/docs/image/#image) for all available options.
 
 Use data-ct-force-size to force using the actual size of the container. (Prevents approximation to the sizes matrix)
 
