@@ -101,7 +101,7 @@ module.exports = function(grunt) {
 					tagMessage: 'Version %VERSION%',
 					push: true,
 					pushTo: 'origin',
-					npm: false,
+					npm: true,
 					npmTag: 'Release v%VERSION%',
 					gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
 				}

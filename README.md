@@ -1,11 +1,10 @@
 # [angular-cloudtasks](https://cloudtasks.io)
-![Bower version](https://img.shields.io/bower/v/angular-cloudtasks.svg?style=flat)
+[![Bower version](https://img.shields.io/bower/v/angular-cloudtasks.svg?style=flat)]()
 [![npm version](https://img.shields.io/npm/v/angular-cloudtasks.svg?style=flat)](https://www.npmjs.com/package/angular-cloudtasks)
 [![Build Status](https://img.shields.io/travis/twbs/angular-cloudtasks/master.svg?style=flat)](https://travis-ci.org/twbs/angular-cloudtasks)
-
-[![dependency Status](https://img.shields.io/david/jonnybgod/angular-cloudtasks.svg?style=flat)](https://david-dm.org/jonnybgod/angular-cloudtasks)
-[![devDependency Status](https://img.shields.io/david/dev/jonnybgod/angular-cloudtasks.svg?style=flat)](https://david-dm.org/jonnybgod/angular-cloudtasks#info=devDependencies)
 [![Codacy Badge](https://www.codacy.com/project/badge/556dd3b19d804062a653336f35987384)](https://www.codacy.com/public/jonnybgod/angular-cloudtasks)
+
+[![Github Releases](https://img.shields.io/github/downloads/Cloudtasks/angular-cloudtasks/latest/total.svg)]()
 
 Allow you to serve highly optimized images to your client apps.
 
