@@ -14,6 +14,18 @@
 }(function (angular) {
 	'use strict';
 
+	function canUseWebP() {
+		var elem = document.createElement('canvas');
+
+		if (!!(elem.getContext && elem.getContext('2d'))) {
+			// was able or not to get WebP representation
+			return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+		} else {
+			// very old browser like IE 8, canvas not supported
+			return false;
+		}
+	}
+
 	var module = angular.module('cloudtasks', []);
 
 	module.provider('$cloudtasks', [ function () {
@@ -42,6 +54,10 @@
 			]
 		};
 
+		if (canUseWebP()) {
+			settings.options.convert = 'webp';
+		}
+
 		var provider = {
 			$get: function() { return settings; },
 			settings: settings
@@ -50,7 +66,7 @@
 		return provider;
 	}]);
 
-	module.directive('ctSrc', ['$cloudtasks', '$location', '$timeout', function($cloudtasks, $location, $timeout) {
+	module.directive('ctSrc', ['$cloudtasks', '$location', '$timeout', '$http', function($cloudtasks, $location, $timeout, $http) {
 		return {
 			restrict: 'A',
 			scope: {},
@@ -60,8 +76,10 @@
 					return;
 				}
 
+				//element.css('min-width', '100%');
+
 				$timeout(function () {
-					var width = element.width();
+					var width = element.width() ? element.width() : element.parent().width();
 					var height = element.height();
 
 					if (attrs.ctSrc.indexOf('http') === -1) {
@@ -69,7 +87,7 @@
 					}
 
 					var optionsString = '/';
-					var options = $cloudtasks.options;
+					var options = angular.copy($cloudtasks.options);
 
 					if (attrs.ctOptions) {
 						options = angular.extend(options, scope.$eval(attrs.ctOptions));
@@ -85,28 +103,58 @@
 						}
 					});
 
-					for (var x = 0; x < $cloudtasks.photoSizesWidths.length; x++) {
-						if ($cloudtasks.photoSizesWidths[x] < width) {
-							for (var y = 0; y < $cloudtasks.photoSizesHeights.length; y++) {
-								if ($cloudtasks.photoSizesHeights[y] < height) {
-									var calc = ($cloudtasks.photoSizesWidths[x-1] ? $cloudtasks.photoSizesWidths[x-1] : $cloudtasks.photoSizesWidths[x]) +'x'+ ($cloudtasks.photoSizesHeights[y-1] ? $cloudtasks.photoSizesHeights[y-1] : $cloudtasks.photoSizesHeights[y]);
-									
-									if (attrs.ctDefault || $cloudtasks.defaultImage) {
-										element.css('background-image', 'url(//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))) +')');
-										element.bind('error', function() {
-											element.unbind( "error" );
-											element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))));
-										});
-									}
+					var calc = '';
 
-									element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent(attrs.ctSrc)));
-									
-									y = $cloudtasks.photoSizesHeights.length + 1;
+					if (attrs.ctSize) {
+						calc = attrs.ctSize;
+					} else {
+						if (!attrs.ctForceSize) {
+							if (width) {
+								for (var x = 0; x < $cloudtasks.photoSizesWidths.length; x++) {
+									if ($cloudtasks.photoSizesWidths[x] < width) {
+										calc = $cloudtasks.photoSizesWidths[x-1] ? $cloudtasks.photoSizesWidths[x-1] : $cloudtasks.photoSizesWidths[x];
+
+										break;
+									}
 								}
 							}
-							x = $cloudtasks.photoSizesWidths.length + 1;
+
+							if (height) {
+								for (var y = 0; y < $cloudtasks.photoSizesHeights.length; y++) {
+									if ($cloudtasks.photoSizesHeights[y] < height) {
+										calc = calc +'x'+ $cloudtasks.photoSizesHeights[y-1] ? $cloudtasks.photoSizesHeights[y-1] : $cloudtasks.photoSizesHeights[y];
+
+										break;
+									}
+								}
+							}
+
+						} else {
+							if (width) {
+								calc = width;
+							}
+
+							if (height) {
+								calc = calc +'x'+ height;
+							}
+						}
+
+						if (!calc) {
+							calc = 'origxorig';
+						} else if (calc.toString().indexOf('x') === -1) {
+							calc = calc +'x';
 						}
 					}
+
+					if (attrs.ctDefault || $cloudtasks.defaultImage) {
+						element.css('background-image', 'url(//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))) +')');
+						element.bind('error', function() {
+							element.unbind( "error" );
+							element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))));
+						});
+					}
+
+					element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent(attrs.ctSrc)));
 				}, 0);
 			}
 		};

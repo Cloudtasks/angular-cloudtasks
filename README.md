@@ -7,7 +7,7 @@
 [![devDependency Status](https://img.shields.io/david/dev/jonnybgod/angular-cloudtasks.svg?style=flat)](https://david-dm.org/jonnybgod/angular-cloudtasks#info=devDependencies)
 [![Codacy Badge](https://www.codacy.com/project/badge/556dd3b19d804062a653336f35987384)](https://www.codacy.com/public/jonnybgod/angular-cloudtasks)
 
-Deliver images with the right size
+Allow you to serve highly optimized images to your client apps.
 
 angular-cloudtasks helps using [Cloudtasks.io](https://cloudtasks.io) image processing task by substituting your images sources with the processing URL.
 
@@ -19,6 +19,12 @@ You will need a [Cloudtasks.io](https://cloudtasks.io) account to be able to use
 
 ```sh
 $ bower install --save angular-cloudtasks
+```
+
+Include angular-cloudtasks module script on your page:
+
+```html
+<script src="bower_components/angular-cloudtasks/dist/ng-cloudtasks.min.js"></script>
 ```
 
 add cloudtasks to your AngularJs module:
@@ -49,9 +55,7 @@ Configure with your [Cloudtasks.io](https://cloudtasks.io) client id:
 .config(['$cloudtasksProvider', function ($cloudtasksProvider) {
 	$cloudtasksProvider.settings.clientId = 'YOUR_CLIENT_ID';
 
-	$cloudtasksProvider.settings.options = {
-		trim: false
-	}
+	$cloudtasksProvider.settings.options.trim = false;
 
 	$cloudtasksProvider.settings.defaultImage = "http://example.com/defaultImage.jpg";
 }])
@@ -60,17 +64,12 @@ Configure with your [Cloudtasks.io](https://cloudtasks.io) client id:
 ### per image options
 
 ```html
-<img data-ct-src="{{imgUrl}}" data-ct-options="{trim: true, smart: true}" data-ct-default="http://example.com/defaultImage.jpg"/>
+<img data-ct-src="{{imgUrl}}" data-ct-options="{trim: true, smart: 'face', filters: 'blur(10):flip()'}" data-ct-default="http://example.com/defaultImage.jpg" data-ct-force-size="">
 ```
 
-## Option list
+See [Image transformations documentation]](https://cloudtasks.io/docs/image/#image) for all available options.
 
- - trim (remove color frame)
- - smart (use smart detection for crop and resize)
- - fit_in
- 	- adaptive
- 	- full
- - filters (apply any imagemagic supported filter)
+Use data-ct-force-size to force using the actual size of the container. (Prevents approximation to the sizes matrix)
 
 ## License
 
