@@ -58,8 +58,6 @@
 					return;
 				}
 
-				//element.css('min-width', '100%');
-
 				$timeout(function () {
 					var width = element.width() ? element.width() : element.parent().width();
 					var height = element.height();
