@@ -133,14 +133,14 @@
 					}
 
 					if (attrs.ctDefault || $cloudtasks.defaultImage) {
-						element.css('background-image', 'url(//'+ (options.test ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))) +')');
+						element.css('background-image', 'url(//'+ (options.dev ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))) +')');
 						element.bind('error', function() {
 							element.unbind( "error" );
-							element.attr('src', '//'+ (options.test ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))));
+							element.attr('src', '//'+ (options.dev ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))));
 						});
 					}
 
-					element.attr('src', '//'+ (options.test ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent(attrs.ctSrc)));
+					element.attr('src', '//'+ (options.dev ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent(attrs.ctSrc)));
 				}, 0);
 			}
 		};
