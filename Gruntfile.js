@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 	@toc 3.
 	@method init
 	*/
-	function init(params) {
+	function init() {
 		/**
 		Project configuration.
 		@toc 5.

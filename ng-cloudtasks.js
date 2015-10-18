@@ -49,7 +49,7 @@
 		return provider;
 	}]);
 
-	module.directive('ctSrc', ['$cloudtasks', '$location', '$timeout', '$http', function($cloudtasks, $location, $timeout, $http) {
+	module.directive('ctSrc', ['$cloudtasks', '$location', '$timeout', function($cloudtasks, $location, $timeout) {
 		return {
 			restrict: 'A',
 			scope: {},
