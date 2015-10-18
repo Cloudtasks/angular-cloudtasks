@@ -60,14 +60,6 @@
 				}
 
 				$timeout(function () {
-					var width = element.width();
-                    var height = element.height();
-
-                    if (!width && !height) {
-                        width = element.parent().width();
-                        height = element.parent().height();
-                    }
-
 					if (attrs.ctSrc.indexOf('http') === -1) {
 						attrs.ctSrc = $location.protocol() +':'+ attrs.ctSrc;
 					}
@@ -90,6 +82,13 @@
 					});
 
 					var calc = '';
+					var width = element.width();
+                    var height = element.height();
+
+                    if (!width && !height) {
+                        width = element.parent().width();
+                        height = element.parent().height();
+                    }
 
 					if (attrs.ctSize) {
 						calc = attrs.ctSize;
@@ -98,8 +97,7 @@
 							if (width) {
 								for (var x = 0; x < $cloudtasks.photoWidths.length; x++) {
 									if ($cloudtasks.photoWidths[x] < width) {
-										calc = $cloudtasks.photoWidths[x-1] ? $cloudtasks.photoWidths[x-1] : $cloudtasks.photoWidths[x];
-
+										calc += $cloudtasks.photoWidths[x-1] ? $cloudtasks.photoWidths[x-1] : $cloudtasks.photoWidths[x];
 										break;
 									}
 								}
@@ -108,8 +106,7 @@
 							if (height && (!width || width/height <= 4 )) {
 								for (var y = 0; y < $cloudtasks.photoHeights.length; y++) {
 									if ($cloudtasks.photoHeights[y] < height) {
-										calc = calc +'x'+ $cloudtasks.photoHeights[y-1] ? $cloudtasks.photoHeights[y-1] : $cloudtasks.photoHeights[y];
-
+										calc += 'x'+ ($cloudtasks.photoHeights[y-1] ? $cloudtasks.photoHeights[y-1] : $cloudtasks.photoHeights[y]);
 										break;
 									}
 								}
