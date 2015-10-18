@@ -93,15 +93,15 @@ module.exports = function(grunt) {
 					add: true,
 					addFiles: ['.'], // '.' for all files except ingored files in .gitignore
 					commit: true,
-					commitMessage: 'Release v%VERSION%',
+					commitMessage: 'Release %VERSION%',
 					commitFiles: ['-a'], // '-a' for all files
 					createTag: true,
-					tagName: 'v%VERSION%',
+					tagName: '%VERSION%',
 					tagMessage: 'Version %VERSION%',
 					push: true,
 					pushTo: 'origin',
 					npm: true,
-					npmTag: 'Release v%VERSION%',
+					npmTag: 'Release %VERSION%',
 					gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d' // options to use with '$ git describe'
 				}
 			}/*,

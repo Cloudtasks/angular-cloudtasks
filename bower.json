@@ -4,7 +4,12 @@
 	"authors": [
 		"João Ribeiro <jonnybgod@gmail.com>"
 	],
-	"description": "Demo",
+	"description": "Allow you to serve highly optimized images to your client apps.",
+	"homepage": "https://cloudtasks.io",
+	"repository": {
+	  "type": "git",
+	  "url": "https://github.com/Cloudtasks/angular-cloudtasks.git"
+	},
 	"keywords": [
 		"angular",
 		"AngularJS",

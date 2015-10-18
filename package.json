@@ -1,9 +1,9 @@
 {
   "author": "Cloudtasks.io",
   "name": "angular-cloudtasks",
-  "version": "0.0.4",
-  "description": "",
-  "homepage": "",
+  "version": "0.0.6",
+  "description": "Allow you to serve highly optimized images to your client apps.",
+  "homepage": "https://cloudtasks.io",
   "dependencies": {},
   "devDependencies": {
     "grunt": "latest",
@@ -15,7 +15,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "main": "dist/ng-cloudtasks.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cloudtasks/angular-cloudtasks.git"
+  },
+  "keywords": [
+    "angular",
+    "AngularJS",
+    "angular-cloudtasks",
+    "cloudtasks",
+    "image",
+    "images",
+    "processing",
+    "image-processing"
+  ],
+  "license": "MIT",
   "engines": {
     "node": ">=4.2.0"
   }
