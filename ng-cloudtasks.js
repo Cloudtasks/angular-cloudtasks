@@ -31,6 +31,7 @@
 	module.provider('$cloudtasks', [ function () {
 		var settings = {
             clientId: false,
+            dev: false,
             options: {},
             photoWidths: [7680, 4096, 3840, 3600, 3072, 2560, 2500, 2048, 2000, 1920, 1856, 1824, 1792, 1600, 1536, 1520, 1440, 1400, 1366, 1365, 1360, 1280, 1152, 1080, 1024, 960, 896, 856, 832, 800, 768, 729, 720, 704, 640, 544, 512, 480, 468, 460, 400, 392, 384, 352, 320, 256, 234, 192, 180, 176, 160, 128, 88, 64, 32, 16, 8],
             photoHeights: [4320, 4096, 3600, 3072, 2613, 2400, 2252, 2048, 1600, 1536, 1440, 1392, 1368, 1344, 1340, 1280, 1200, 1152, 1128, 1120, 1080, 1050, 1024, 992, 960, 900, 870, 864, 856, 854, 800, 788, 768, 766, 720, 624, 600, 576, 540, 486, 484, 483, 480, 400, 384, 372, 350, 348, 342, 320, 300, 288, 256, 240, 200, 192, 144, 135, 132, 120, 96, 72, 64, 60, 55, 32, 31, 16, 8]
@@ -59,8 +60,13 @@
 				}
 
 				$timeout(function () {
-					var width = element.width() ? element.width() : element.parent().width();
-					var height = element.height();
+					var width = element.width();
+                    var height = element.height();
+
+                    if (!width && !height) {
+                        width = element.parent().width();
+                        height = element.parent().height();
+                    }
 
 					if (attrs.ctSrc.indexOf('http') === -1) {
 						attrs.ctSrc = $location.protocol() +':'+ attrs.ctSrc;
@@ -99,7 +105,7 @@
 								}
 							}
 
-							if (height) {
+							if (height && (!width || width/height <= 4 )) {
 								for (var y = 0; y < $cloudtasks.photoHeights.length; y++) {
 									if ($cloudtasks.photoHeights[y] < height) {
 										calc = calc +'x'+ $cloudtasks.photoHeights[y-1] ? $cloudtasks.photoHeights[y-1] : $cloudtasks.photoHeights[y];
@@ -127,14 +133,14 @@
 					}
 
 					if (attrs.ctDefault || $cloudtasks.defaultImage) {
-						element.css('background-image', 'url(//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))) +')');
+						element.css('background-image', 'url(//'+ (options.test ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))) +')');
 						element.bind('error', function() {
 							element.unbind( "error" );
-							element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))));
+							element.attr('src', '//'+ (options.test ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent((attrs.ctDefault || $cloudtasks.defaultImage))));
 						});
 					}
 
-					element.attr('src', '//images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent(attrs.ctSrc)));
+					element.attr('src', '//'+ (options.test ? 'dev-' : '') +'images.cloudtasks.io/'+ $cloudtasks.clientId + optionsString + calc +'/'+ encodeURIComponent(decodeURIComponent(attrs.ctSrc)));
 				}, 0);
 			}
 		};
