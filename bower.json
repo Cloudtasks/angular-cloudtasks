@@ -4,7 +4,7 @@
 	"authors": [
 		"João Ribeiro <jonnybgod@gmail.com>"
 	],
-	"description": "Allow you to serve highly optimized images to your client apps.",
+	"description": "Allows you to serve highly optimized images to your client apps.",
 	"homepage": "https://cloudtasks.io",
 	"repository": {
 	  "type": "git",

@@ -82,13 +82,13 @@
 					});
 
 					var calc = '';
-					var width = element.width();
-                    var height = element.height();
+					var width = element.clientWidth;
+          var height = element.clientHeight;
 
-                    if (!width && !height) {
-                        width = element.parent().width();
-                        height = element.parent().height();
-                    }
+          if (!width && !height) {
+              width = element.parent().clientWidth;
+              height = element.parent().clientHeight;
+          }
 
 					if (attrs.ctSize) {
 						calc = attrs.ctSize;
