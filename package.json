@@ -1,7 +1,7 @@
 {
   "author": "Cloudtasks.io",
   "name": "angular-cloudtasks",
-  "version": "0.0.14",
+  "version": "0.0.13",
   "description": "Allows you to serve highly optimized images to your client apps.",
   "homepage": "https://cloudtasks.io",
   "dependencies": {},
